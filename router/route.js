@@ -54,8 +54,11 @@ router.post("/login", async (req, res) => {
 
       const token = await userFound.generateAuthToken();
       res.cookie("jwttoken", token, {
+        domain: "https://mern-todolist-1e5g.onrender.com",
+        path: "/",
+        expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+        secure: true,
         httpOnly: true,
-        // secure: true,
       });
 
       if (!correctPassword) {
