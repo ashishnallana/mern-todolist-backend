@@ -52,8 +52,15 @@ router.post("/login", async (req, res) => {
         userFound.password
       );
 
+      // const oneMonthFromNow = new Date();
+      // oneMonthFromNow.setMonth(oneMonthFromNow.getMonth() + 1);
+
       const token = await userFound.generateAuthToken();
-      res.cookie("jwttoken", token, { httpOnly: true });
+      res.cookie("jwttoken", token, {
+        // expires: oneMonthFromNow,
+        httpOnly: true,
+        secure: true,
+      });
 
       if (!correctPassword) {
         res.status(400).json({ error: "Invalid Credentials!" });
