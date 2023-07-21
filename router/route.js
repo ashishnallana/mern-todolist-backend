@@ -57,8 +57,8 @@ router.post("/login", async (req, res) => {
         domain: "https://mern-todolist-1e5g.onrender.com",
         path: "/",
         expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-        secure: true,
-        httpOnly: true,
+        // secure: true,
+        httpOnly: false,
       });
       res.send("Cookie has been set.");
 
