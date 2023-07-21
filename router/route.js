@@ -59,7 +59,7 @@ router.post("/login", async (req, res) => {
       res.cookie("jwttoken", token, {
         // expires: oneMonthFromNow,
         httpOnly: true,
-        secure: true,
+        // secure: true,
       });
 
       if (!correctPassword) {
