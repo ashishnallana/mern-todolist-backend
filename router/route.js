@@ -60,6 +60,7 @@ router.post("/login", async (req, res) => {
         secure: true,
         httpOnly: true,
       });
+      res.send("Cookie has been set.");
 
       if (!correctPassword) {
         res.status(400).json({ error: "Invalid Credentials!" });
