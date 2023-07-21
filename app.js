@@ -11,21 +11,8 @@ const port = process.env.PORT || 3001;
 // connecting to db
 require("./db/connection");
 
-const allowedOrigins = ["https://mern-todo-844aa.web.app"];
-
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-};
-
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors({ origin: "https://mern-todo-844aa.web.app", credentials: true }));
 app.use(cookieParser());
 // linking express router
 app.use(require("./router/route"));
